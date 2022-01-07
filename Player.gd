@@ -18,7 +18,7 @@ func _physics_process(delta):
 	_velocity.z += drag # illusion of flying forward
 	_velocity = move_and_slide(_velocity, Vector3.UP)
 	#print(_velocity)
-	print(_move_vector)
+	#print(_move_vector)
 
 
 # apply the _move_vector to the _velocity

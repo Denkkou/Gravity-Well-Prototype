@@ -1,12 +1,17 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://VectorCreator.tscn" type="PackedScene" id=2]
+[ext_resource path="res://GravWellSpawner.gd" type="Script" id=3]
+[ext_resource path="res://Gravity Well.tscn" type="PackedScene" id=4]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 1, 0.0287637, 1 )
 
 [sub_resource type="PlaneMesh" id=2]
+
+[sub_resource type="SpatialMaterial" id=7]
+albedo_color = Color( 0, 0, 0, 1 )
 
 [sub_resource type="CubeMesh" id=3]
 
@@ -27,7 +32,7 @@ shape = SubResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="SceneElements/Floor"]
 mesh = SubResource( 2 )
-material/0 = null
+material/0 = SubResource( 7 )
 
 [node name="Walls" type="Spatial" parent="SceneElements"]
 visible = false
@@ -92,7 +97,39 @@ material/0 = SubResource( 4 )
 shape = SubResource( 5 )
 
 [node name="GravWellSpawner" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -17.3575 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18.3575 )
+script = ExtResource( 3 )
+_gravity_well_wr = NodePath("../GravWellWaitingRoom")
+
+[node name="SpawnPoint1" type="Position3D" parent="GravWellSpawner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 1 )
+
+[node name="SpawnPoint2" type="Position3D" parent="GravWellSpawner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1 )
+
+[node name="SpawnPoint3" type="Position3D" parent="GravWellSpawner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 1 )
 
 [node name="VectorCreator" parent="." instance=ExtResource( 2 )]
+
+[node name="GravWellWaitingRoom" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0 )
+
+[node name="Gravity Well" parent="GravWellWaitingRoom" instance=ExtResource( 4 )]
+
+[node name="Gravity Well2" parent="GravWellWaitingRoom" instance=ExtResource( 4 )]
+
+[node name="Gravity Well3" parent="GravWellWaitingRoom" instance=ExtResource( 4 )]
+
+[node name="Gravity Well4" parent="GravWellWaitingRoom" instance=ExtResource( 4 )]
+
+[node name="Gravity Well5" parent="GravWellWaitingRoom" instance=ExtResource( 4 )]
+
+[node name="Gravity Well6" parent="GravWellWaitingRoom" instance=ExtResource( 4 )]
+
+[node name="Gravity Well7" parent="GravWellWaitingRoom" instance=ExtResource( 4 )]
+
+[node name="Gravity Well8" parent="GravWellWaitingRoom" instance=ExtResource( 4 )]
+
+[node name="Gravity Well9" parent="GravWellWaitingRoom" instance=ExtResource( 4 )]
 [connection signal="vector_created" from="VectorCreator" to="Player" method="_drag_vector"]
