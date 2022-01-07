@@ -11,7 +11,7 @@
 
  Coded in GDscript on Godot v3.2.3
 
- Current tasks list:
+## Current tasks list:
  - Player:
    - [x] Vector-based movement
    - [x] Touch-drag controls
