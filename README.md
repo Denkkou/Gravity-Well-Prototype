@@ -13,23 +13,23 @@
 
  Current tasks list:
  - Player:
-	Vector-based movement	[X]
-	Touch-drag controls	[X]
-	Idle slowdown		[X]
+	--Vector-based movement		[X]
+	--Touch-drag controls		[X]
+	--Idle slowdown			[X]
 
  - Gravity Wells
-	Well movement		[X]
-	Spawn wells at interval [X]
-	Despawn to waiting room	[ ]
-	Spawn at random spawns  [ ]
-	Collision with player	[ ]
-	Distance-based pulling	[ ]
+	--Well movement			[X]
+	--Spawn wells at interval	[X]
+	--Despawn to waiting room	[ ]
+	--Spawn at random spawns 	[ ]
+	--Collision with player		[ ]
+	--Distance-based pulling	[ ]
 
  - Game Systems
-	Menu->Gameplay->End->	[ ]
-	Hi-Score create & log	[ ]
-	Core Main Menu features	[ ]
-		Play	[ ]
-		Score	[ ]
-		Options	[ ]
-		Exit	[ ]
+	--Menu->Gameplay->End->		[ ]
+	--Hi-Score create & log		[ ]
+	--Core Main Menu features	[ ]
+		---Play		[ ]
+		---Score	[ ]
+		---Options	[ ]
+		---Exit		[ ]
