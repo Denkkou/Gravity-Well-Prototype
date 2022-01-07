@@ -12,24 +12,24 @@
  Coded in GDscript on Godot v3.2.3
 
  Current tasks list:
- -Player:
-  -Vector-based movement	[X]
-  -Touch-drag controls		[X]
-  -Idle slowdown		[X]
+ - Player:
+  - Vector-based movement	[X]
+  - Touch-drag controls		[X]
+  - Idle slowdown		[X]
 
- -Gravity Wells
-  -Well movement		[X]
-  -Spawn wells at interval	[X]
-   -Despawn to waiting room	[ ]
-   -Spawn at random spawns 	[ ]
-   -Collision with player	[ ]
-   -Distance-based pulling	[ ]
+ - Gravity Wells
+  - Well movement		[X]
+  - Spawn wells at interval	[X]
+   - Despawn to waiting room	[ ]
+   - Spawn at random spawns 	[ ]
+   - Collision with player	[ ]
+   - Distance-based pulling	[ ]
 
- -Game Systems
-  -Menu->Gameplay->End->	[ ]
-  -Hi-Score create & log	[ ]
-  -Core Main Menu features	[ ]
-   -Play	[ ]
-   -Score	[ ]
-   -Options	[ ]
-   -Exit	[ ]
+ - Game Systems
+  - Menu->Gameplay->End->	[ ]
+  - Hi-Score create & log	[ ]
+  - Core Main Menu features	[ ]
+   - Play	[ ]
+   - Score	[ ]
+   - Options	[ ]
+   - Exit	[ ]
