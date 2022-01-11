@@ -1,24 +1,28 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://VectorCreator.tscn" type="PackedScene" id=2]
 [ext_resource path="res://GravWellSpawner.gd" type="Script" id=3]
 [ext_resource path="res://Gravity Well.tscn" type="PackedScene" id=4]
+[ext_resource path="res://BoundaryPlane.gd" type="Script" id=5]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 1, 0.0287637, 1 )
 
 [sub_resource type="PlaneMesh" id=2]
 
-[sub_resource type="SpatialMaterial" id=7]
+[sub_resource type="SpatialMaterial" id=3]
 albedo_color = Color( 0, 0, 0, 1 )
 
-[sub_resource type="CubeMesh" id=3]
+[sub_resource type="CubeMesh" id=4]
 
-[sub_resource type="SpatialMaterial" id=4]
+[sub_resource type="SpatialMaterial" id=5]
 albedo_color = Color( 0.933333, 0.0235294, 0.0235294, 1 )
 
-[sub_resource type="BoxShape" id=5]
+[sub_resource type="BoxShape" id=6]
+
+[sub_resource type="BoxShape" id=7]
+extents = Vector3( 0.227585, 0.189544, 0.318471 )
 
 [node name="GameWorld" type="Spatial"]
 
@@ -32,7 +36,7 @@ shape = SubResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="SceneElements/Floor"]
 mesh = SubResource( 2 )
-material/0 = SubResource( 7 )
+material/0 = SubResource( 3 )
 
 [node name="Walls" type="Spatial" parent="SceneElements"]
 visible = false
@@ -90,11 +94,11 @@ script = ExtResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Player"]
 layers = 3
-mesh = SubResource( 3 )
-material/0 = SubResource( 4 )
+mesh = SubResource( 4 )
+material/0 = SubResource( 5 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Player"]
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 
 [node name="GravWellSpawner" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18.3575 )
@@ -105,9 +109,15 @@ _gravity_well_wr = NodePath("../GravWellWaitingRoom")
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 1 )
 
 [node name="SpawnPoint2" type="Position3D" parent="GravWellSpawner"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1 )
 
 [node name="SpawnPoint3" type="Position3D" parent="GravWellSpawner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1 )
+
+[node name="SpawnPoint4" type="Position3D" parent="GravWellSpawner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1 )
+
+[node name="SpawnPoint5" type="Position3D" parent="GravWellSpawner"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 1 )
 
 [node name="VectorCreator" parent="." instance=ExtResource( 2 )]
@@ -132,4 +142,17 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0 )
 [node name="Gravity Well8" parent="GravWellWaitingRoom" instance=ExtResource( 4 )]
 
 [node name="Gravity Well9" parent="GravWellWaitingRoom" instance=ExtResource( 4 )]
+
+[node name="Gravity Well10" parent="GravWellWaitingRoom" instance=ExtResource( 4 )]
+
+[node name="BoundaryPlane" type="Area" parent="."]
+transform = Transform( -13.7592, -3.42697e-07, 2.2215e-14, 0, -8.74228e-08, -2.966, 3.06854e-07, -1, 6.4824e-08, 0, 0, 14.3437 )
+collision_layer = 2
+collision_mask = 2
+script = ExtResource( 5 )
+
+[node name="CollisionShape" type="CollisionShape" parent="BoundaryPlane"]
+transform = Transform( 1, -3.55271e-15, 2.11758e-22, 0, 1, 0, 0, -3.55271e-15, 1, 0, 0, 0 )
+shape = SubResource( 7 )
 [connection signal="vector_created" from="VectorCreator" to="Player" method="_drag_vector"]
+[connection signal="area_entered" from="BoundaryPlane" to="GravWellSpawner" method="_on_BoundaryPlane_area_entered"]

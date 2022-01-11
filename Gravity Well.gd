@@ -1,6 +1,6 @@
-extends MeshInstance
+extends Area
 
-export(float) var speed = 5
+export(float) var speed = 8
 
 var can_move = false
 
