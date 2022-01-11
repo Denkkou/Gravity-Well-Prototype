@@ -16,8 +16,12 @@ _global_script_class_icons={
 [application]
 
 config/name="Gravity Well"
-run/main_scene="res://Environment.tscn"
+run/main_scene="res://Scenes/play_environment.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+GameEvents="*res://Scripts/game_events.gd"
 
 [display]
 

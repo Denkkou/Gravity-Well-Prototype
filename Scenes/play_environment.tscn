@@ -1,0 +1,132 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Scenes/gravity_well.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/touch_vector_creator.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/well_spawner.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scripts/game_world.gd" type="Script" id=5]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 1, 0.0287637, 1 )
+
+[sub_resource type="PlaneMesh" id=2]
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="GDScript" id=4]
+script/source = "extends Area
+
+func _ready():
+	pass
+"
+
+[sub_resource type="BoxShape" id=5]
+extents = Vector3( 0.227585, 0.189544, 0.318471 )
+
+[node name="GameWorld" type="Spatial"]
+script = ExtResource( 5 )
+
+[node name="VectorCreator" parent="." instance=ExtResource( 3 )]
+position = Vector2( 361, 540 )
+
+[node name="SceneElements" type="Spatial" parent="."]
+
+[node name="Floor" type="StaticBody" parent="SceneElements"]
+transform = Transform( 3, 0, 0, 0, 1, 0, 0, 0, 15, 0, 0, -3.55465 )
+
+[node name="CollisionShape" type="CollisionShape" parent="SceneElements/Floor"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="SceneElements/Floor"]
+mesh = SubResource( 2 )
+material/0 = SubResource( 3 )
+
+[node name="Walls" type="Spatial" parent="SceneElements"]
+visible = false
+
+[node name="Fence" type="StaticBody" parent="SceneElements/Walls"]
+transform = Transform( 3.51, 0, 0, 0, -4.37114e-08, -1.483, 0, 1, -6.4824e-08, 0, 0, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="SceneElements/Walls/Fence"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="SceneElements/Walls/Fence"]
+transform = Transform( 0.876234, 0, 0, 0, 1, -4.81895e-08, 0, -2.19114e-08, 0.256611, 0, -1.42115e-08, -0.219232 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Fence2" type="StaticBody" parent="SceneElements/Walls"]
+transform = Transform( -3.51, -8.74228e-08, 5.66709e-15, 0, -4.37114e-08, -1.483, 3.06854e-07, -1, 6.4824e-08, 0, 0, 11.3437 )
+
+[node name="CollisionShape" type="CollisionShape" parent="SceneElements/Walls/Fence2"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="SceneElements/Walls/Fence2"]
+transform = Transform( 1, 0, 0, 0, 1, -4.81895e-08, 0, -2.19114e-08, 0.256611, 0, 0, -0.219232 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Fence3" type="StaticBody" parent="SceneElements/Walls"]
+transform = Transform( 4.72315e-07, -1, 6.4824e-08, 0, -4.37114e-08, -1.483, 6.256, 7.54979e-08, -4.89408e-15, 3, 0, 5.33 )
+
+[node name="CollisionShape" type="CollisionShape" parent="SceneElements/Walls/Fence3"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="SceneElements/Walls/Fence3"]
+transform = Transform( 1, 0, 1.05879e-22, 0, 1, -4.81894e-08, -5.92923e-21, -2.19114e-08, 0.256611, 0.141479, 0, -0.219232 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Fence4" type="StaticBody" parent="SceneElements/Walls"]
+transform = Transform( -1.01923e-06, 1, -6.4824e-08, 0, -4.37114e-08, -1.483, -6.256, -1.62921e-07, 1.05612e-14, -3, 0, 5.33 )
+
+[node name="CollisionShape" type="CollisionShape" parent="SceneElements/Walls/Fence4"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="SceneElements/Walls/Fence4"]
+transform = Transform( 1, -1.24345e-14, 1.27055e-21, 0, 1, -4.81894e-08, -2.37169e-20, -2.19114e-08, 0.256611, -0.141479, 2.14577e-06, -0.219232 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="BoundaryPlane" type="Area" parent="SceneElements"]
+transform = Transform( -13.7592, -3.42697e-07, 2.2215e-14, 0, -8.74228e-08, -2.966, 3.06854e-07, -1, 6.4824e-08, 0, 0, 14.3437 )
+collision_layer = 2
+collision_mask = 2
+script = SubResource( 4 )
+
+[node name="CollisionShape" type="CollisionShape" parent="SceneElements/BoundaryPlane"]
+transform = Transform( 1, -3.55271e-15, 2.11758e-22, 0, 1, 0, 0, -3.55271e-15, 1, 0, 0, 0 )
+shape = SubResource( 5 )
+
+[node name="GravWellSpawner" parent="." instance=ExtResource( 4 )]
+
+[node name="GravWellWaitingRoom" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -23 )
+
+[node name="Gravity Well" parent="GravWellWaitingRoom" instance=ExtResource( 1 )]
+
+[node name="Gravity Well2" parent="GravWellWaitingRoom" instance=ExtResource( 1 )]
+
+[node name="Gravity Well3" parent="GravWellWaitingRoom" instance=ExtResource( 1 )]
+
+[node name="Gravity Well4" parent="GravWellWaitingRoom" instance=ExtResource( 1 )]
+
+[node name="Gravity Well5" parent="GravWellWaitingRoom" instance=ExtResource( 1 )]
+
+[node name="Gravity Well6" parent="GravWellWaitingRoom" instance=ExtResource( 1 )]
+
+[node name="Gravity Well7" parent="GravWellWaitingRoom" instance=ExtResource( 1 )]
+
+[node name="Gravity Well8" parent="GravWellWaitingRoom" instance=ExtResource( 1 )]
+
+[node name="Gravity Well9" parent="GravWellWaitingRoom" instance=ExtResource( 1 )]
+
+[node name="Gravity Well10" parent="GravWellWaitingRoom" instance=ExtResource( 1 )]
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 9.132, 12.99 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+[connection signal="vector_created" from="VectorCreator" to="Player" method="_drag_vector"]
+[connection signal="area_entered" from="SceneElements/BoundaryPlane" to="GravWellSpawner" method="_on_BoundaryPlane_area_entered"]

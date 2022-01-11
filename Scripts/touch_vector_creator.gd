@@ -3,7 +3,7 @@ extends Area2D
 
 signal vector_created(vector)
 
-export(float) var max_length := 200
+export(float) var max_length := 150
 
 var touch_down := false
 var position_start := Vector2.ZERO
