@@ -46,7 +46,7 @@ material/0 = SubResource( 3 )
 visible = false
 
 [node name="Fence" type="StaticBody" parent="SceneElements/Walls"]
-transform = Transform( 3.51, 0, 0, 0, -4.37114e-08, -1.483, 0, 1, -6.4824e-08, 0, 0, 0 )
+transform = Transform( 3.51, 0, 0, 0, -4.37114e-08, -1.483, 0, 1, -6.4824e-08, 0, 0, -10 )
 
 [node name="CollisionShape" type="CollisionShape" parent="SceneElements/Walls/Fence"]
 shape = SubResource( 1 )
@@ -68,7 +68,7 @@ mesh = SubResource( 2 )
 material/0 = null
 
 [node name="Fence3" type="StaticBody" parent="SceneElements/Walls"]
-transform = Transform( 4.72315e-07, -1, 6.4824e-08, 0, -4.37114e-08, -1.483, 6.256, 7.54979e-08, -4.89408e-15, 3, 0, 5.33 )
+transform = Transform( 4.72315e-07, -1, 6.4824e-08, 0, -4.37114e-08, -1.483, 16.6885, 2.01398e-07, -1.30554e-14, 3, 0, -2.67 )
 
 [node name="CollisionShape" type="CollisionShape" parent="SceneElements/Walls/Fence3"]
 shape = SubResource( 1 )
@@ -79,7 +79,7 @@ mesh = SubResource( 2 )
 material/0 = null
 
 [node name="Fence4" type="StaticBody" parent="SceneElements/Walls"]
-transform = Transform( -1.01923e-06, 1, -6.4824e-08, 0, -4.37114e-08, -1.483, -6.256, -1.62921e-07, 1.05612e-14, -3, 0, 5.33 )
+transform = Transform( -1.01923e-06, 1, -6.4824e-08, 0, -4.37114e-08, -1.483, -16.2656, -4.23595e-07, 2.74591e-14, -3, 0, -4.67 )
 
 [node name="CollisionShape" type="CollisionShape" parent="SceneElements/Walls/Fence4"]
 shape = SubResource( 1 )

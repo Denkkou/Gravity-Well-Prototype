@@ -1,13 +1,15 @@
 extends KinematicBody
 
 export(float) var speed = 12
-export(float) var acceleration = 90
+export(float) var acceleration = 100
 export(float) var friction = acceleration / speed
 export(float) var drag = 0.15
 
 var _velocity = Vector3.ZERO
 var _move_vector = Vector3.ZERO
 
+func _ready():
+	GameEvents.connect("gravity_exerted", self, "_move_to_pull")
 
 func _process(delta):
 	apply_movement(delta)
@@ -42,3 +44,7 @@ func _drag_vector(vector):
 
 func broadcast_location():
 	GameEvents.emit_signal("player_position", self.global_transform.origin)
+
+
+func _move_to_pull(vector, force):
+	_velocity += vector * force

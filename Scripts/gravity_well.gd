@@ -1,7 +1,7 @@
 extends Area
 
-export(float) var speed = 8
-export(float) var max_pull_reach = 10
+export(float) var speed = 5
+export(float) var max_pull_reach = 4
 
 var can_move = false
 
@@ -30,7 +30,13 @@ func _distance_to_player(player_pos):
 	
 	# if within circle of influence, pull
 	if dist_to_player <= max_pull_reach:
-		pass
+		# using grav formula, values tweaked to emulate behaviour rather than realism
+		# attraction = custom gravity constant * (player mass * well mass) / distance^2
+		var pull_force = 0.001 * ((1 * 1000) / (dist_to_player * dist_to_player))
+		print(self.name, " is pulling with force ", pull_force)
+		
+		# emit signal giving player the vector to well (inverse of vect_to_player)
+		GameEvents.emit_signal("gravity_exerted", -vect_to_player, pull_force)
 	
 	# this raycast visualises the vect_to_player, isn't used programatically
 	if dist_to_player <= max_pull_reach:

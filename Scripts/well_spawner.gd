@@ -4,8 +4,8 @@ extends Spatial
 export(NodePath) onready var _gravity_well_wr = get_node(_gravity_well_wr) as Spatial
 
 export(int) var _spawn_cap
-export(int) var _time_interval_min = 50
-export(int) var _time_interval_max = 100
+export(int) var _time_interval_min = 150
+export(int) var _time_interval_max = 150
 
 var _frames_since_last_spawn = 0
 var _decided_spawn_interval = 0
